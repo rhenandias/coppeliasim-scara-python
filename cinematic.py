@@ -1,17 +1,14 @@
 from math import cos, sin, atan2, acos, radians, degrees, pow
 
-tamanho_elo_1 = 0.4670
-tamanho_elo_2 = 0.4005
-precisao = 3
 
-
-def dir_transform(t1, t2, l1, l2):
+def dir_transform(t1, t2, l1, l2, precisao):
     """
     Transformação Direta - Passagem do espaço de juntas para espaço cartesiano
 
     Parâmetros:
         t1, t2 = Ângulo das juntas em graus
         l1, l2 = Comprimentos dos elos  em metros
+        precisao = Precisão decimal para cálculos
 
     Retorno:
         x, y = Posições cartesianas
@@ -33,13 +30,14 @@ def dir_transform(t1, t2, l1, l2):
     return x, y
 
 
-def inv_transform(x, y, l1, l2):
+def inv_transform(x, y, l1, l2, precisao):
     """
     Transformação Inversa - Passagem do espaço cartesiano para espaço das juntas
 
     Parâmetros:
         x, y = Posição cartesiana
         l1, l2 = Comprimentos dos elos  em metros
+        precisao = Precisão decimal para cálculos
 
     Retorno:
         (t1, t2), (t1, t2) = Conjunto de ângulos possíveis para os elos (em graus)
@@ -76,10 +74,3 @@ def inv_transform(x, y, l1, l2):
     res_b = (round(degrees(t1), precisao), round(degrees(t2), precisao))
 
     return res_a, res_b
-
-
-x, y = dir_transform(45, 45, tamanho_elo_1, tamanho_elo_2)
-print(x, y)
-
-cjA, cjB = inv_transform(0.33, 0.731, tamanho_elo_1, tamanho_elo_2)
-print(cjA, cjB)
