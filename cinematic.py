@@ -1,4 +1,5 @@
 from math import cos, sin, atan2, acos, radians, degrees, pow
+from decimal import *
 
 
 def dir_transform(t1, t2, l1, l2, precisao):
@@ -74,3 +75,10 @@ def inv_transform(x, y, l1, l2, precisao):
     res_b = (round(degrees(t1), precisao), round(degrees(t2), precisao))
 
     return res_a, res_b
+
+
+x, y = dir_transform(45, 45, Decimal(0.4), 0.4, 2)
+print(x, y)
+
+cj1, cj2 = inv_transform(x, y, 0.4, 0.4, 2)
+print(cj1, cj2)
