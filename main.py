@@ -6,8 +6,10 @@ from matplotlib import pyplot as plt
 # Inicia Simulação
 scara.start()
 
+# Salva a imagem da câmera
 scara.get_camera()
 
+# Primeiros testes de identificação de padrões
 img_rgb = cv.imread('../CoppeliaSim/images/camera.png')
 assert img_rgb is not None, "file could not be read, check with os.path.exists()"
 img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
